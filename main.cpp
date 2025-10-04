@@ -5,6 +5,8 @@
 #include <iomanip>
 using namespace std;
 
+const int W10 = 10;
+
 struct Node {
     float rating;
     string comment;
@@ -27,19 +29,16 @@ void addToTail(Node *&head, float rating, string &comment);
 // returns: NA
 void displayReview(Node *head);
 
-// deleteList() delete all node in the linked list
-// arguments: head pointer
-// returns: NA
-void deleteList(Node *&head);
+
 
 int main() {
     Node *head = nullptr;
     int choice;
 
     cout << "Which linked list method should we use?\n";
-    cout << "    [1] New nodes are added at the head of the linked list\n";
-    cout << "    [2] New nodes are added at the tail of the linked list\n";
-    cout << "    Choice: ";
+    cout << setw(W10) << "[1] New nodes are added at the head of the linked list\n";
+    cout << setw(W10) << "[2] New nodes are added at the tail of the linked list\n";
+    cout << setw(W10) << "Choice: ";
     cin >> choice;
     cin.ignore();
 
@@ -64,7 +63,7 @@ int main() {
         cin >> again;
         cin.ignore();
     }
-    cout << "Outputting all Reviews: \n";
+    cout << "Outputting all all Reviews: \n";
     displayReview(head);
 
     return 0;
@@ -95,7 +94,7 @@ void displayReview(Node *head){
     }
     Node *current = head;
 
-    int count = 1;
+    int count = 0;
     float sum = 0;
     while (current) {
         cout << "    > Review #" << count << ": "
