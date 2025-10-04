@@ -5,16 +5,24 @@
 #include <iomanip>
 using namespace std;
 
-const int SIZE = 7;  
-
 struct Node {
-    double rating;
-    string comments;
+    float rating;
+    string comment;
     Node *next;
 };
 
 // function prototypes
 // addToHead() adds a new node with the given value to Head of list
-// arguments: head pointer, float value
+// arguments: head pointer, float rating, string comment
 // returns: NA
-void addToHead(Node *&head, double rating, string &comments);
+void addToHead(Node *&head, float rating, string &comment);
+
+// addToTail() adds a new node with the given value to Tail of list
+// arguments: head pointer, float rating, string comment
+// returns: NA
+void addToTail(Node *&head, float rating, string &comment);
+
+// displayReview() display the Review
+// arguments: head pointer
+// returns: NA
+void displayReview(Node *head);
