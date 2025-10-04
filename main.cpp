@@ -30,6 +30,7 @@ void addToTail(Node *&head, float rating, string &comment);
 void displayReview(Node *head);
 
 
+
 int main() {
     Node *head = nullptr;
     int choice;
@@ -40,4 +41,27 @@ int main() {
     cout << setw(W10) << "Choice: ";
     cin >> choice;
     cin.ignore();
+
+    char again = 'y';
+    while (again == 'y' || again == 'Y'){
+        float rating;
+        string comment;
+        cout << "Enter Review Rating (0-5): ";
+        cin >> rating;
+        cin.ignore();
+        cout << "Enter Review Comments: ";
+        getline(cin, comment);
+
+        if (choice == 1){
+            addToHead(head, rating, comment);
+        }
+        else {
+            addToTail(head, rating, comment);
+        }
+
+        cout << "Enter another review? Y/N: ";
+        cin >> again;
+        cin.ignore();
+    }
+    cout << "Outputting all ";
 }
