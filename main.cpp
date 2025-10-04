@@ -5,8 +5,6 @@
 #include <iomanip>
 using namespace std;
 
-const int W10 = 10;
-
 struct Node {
     float rating;
     string comment;
@@ -39,9 +37,9 @@ int main() {
     int choice;
 
     cout << "Which linked list method should we use?\n";
-    cout << setw(W10) << "[1] New nodes are added at the head of the linked list\n";
-    cout << setw(W10) << "[2] New nodes are added at the tail of the linked list\n";
-    cout << setw(W10) << "Choice: ";
+    cout << "    [1] New nodes are added at the head of the linked list\n";
+    cout << "    [2] New nodes are added at the tail of the linked list\n";
+    cout << "    Choice: ";
     cin >> choice;
     cin.ignore();
 
@@ -67,7 +65,7 @@ int main() {
         cin.ignore();
     }
     cout << "Outputting all Reviews: \n";
-    output(head);
+    displayReview(head);
 
     return 0;
 }
@@ -90,7 +88,7 @@ void addToTail(Node *&head, float rating, string &comment){
     current->next = newNode;
 }
 
-void output(Node *head){
+void displayReview(Node *head){
     if (!head) {
         cout << "Empty list.\n";
         return;
@@ -100,7 +98,7 @@ void output(Node *head){
     int count = 1;
     float sum = 0;
     while (current) {
-        cout << setw(W10) << "> Review #" << count << ": "
+        cout << "    > Review #" << count << ": "
              << fixed << setprecision(1) 
              << current->rating << ": " 
              << current->comment << endl;
@@ -109,7 +107,7 @@ void output(Node *head){
         count++;
     }
     if (count > 1) {
-        cout << setw(W10) << "> Average: " << fixed << setprecision(5) 
+        cout << "    > Average: " << fixed << setprecision(5) 
              << (sum / (count - 1)) << endl;
     }
 }
