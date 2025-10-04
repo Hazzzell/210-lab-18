@@ -29,7 +29,10 @@ void addToTail(Node *&head, float rating, string &comment);
 // returns: NA
 void displayReview(Node *head);
 
-
+// deleteList() delete all node in the linked list
+// arguments: head pointer
+// returns: NA
+void deleteList(Node *&head);
 
 int main() {
     Node *head = nullptr;
@@ -63,5 +66,60 @@ int main() {
         cin >> again;
         cin.ignore();
     }
-    cout << "Outputting all ";
+    cout << "Outputting all Reviews: \n";
+    output(head);
+
+    return 0;
+}
+
+void addToHead(Node *&head, float rating, string &comment){
+    Node *newNode = new Node{rating, comment, head};
+    head = newNode;
+}
+
+void addToTail(Node *&head, float rating, string &comment){
+    Node *newNode = new Node{rating, comment, nullptr};
+    if (!head){
+        head = newNode;
+        return;
+    }
+    Node *current = head;
+    while (current->next){
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+void output(Node *head){
+    if (!head) {
+        cout << "Empty list.\n";
+        return;
+    }
+    Node *current = head;
+
+    int count = 1;
+    float sum = 0;
+    while (current) {
+        cout << setw(W10) << "> Review #" << count << ": "
+             << fixed << setprecision(1) 
+             << current->rating << ": " 
+             << current->comment << endl;
+        sum += current->rating;
+        current = current->next;
+        count++;
+    }
+    if (count > 1) {
+        cout << setw(W10) << "> Average: " << fixed << setprecision(5) 
+             << (sum / (count - 1)) << endl;
+    }
+}
+
+void deleteList(Node *&head){
+    Node *current = head;
+    while (current){
+        Node *temp = current;
+        current = current->next;
+        delete temp;
+    }
+    head = nullptr;
 }
