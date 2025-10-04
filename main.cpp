@@ -5,6 +5,8 @@
 #include <iomanip>
 using namespace std;
 
+const int W10 = 10;
+
 struct Node {
     float rating;
     string comment;
@@ -26,3 +28,16 @@ void addToTail(Node *&head, float rating, string &comment);
 // arguments: head pointer
 // returns: NA
 void displayReview(Node *head);
+
+
+int main() {
+    Node *head = nullptr;
+    int choice;
+
+    cout << "Which linked list method should we use?\n";
+    cout << setw(W10) << "[1] New nodes are added at the head of the linked list\n";
+    cout << setw(W10) << "[2] New nodes are added at the tail of the linked list\n";
+    cout << setw(W10) << "Choice: ";
+    cin >> choice;
+    cin.ignore();
+}
